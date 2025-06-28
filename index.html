@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA Entretien - Service de Nettoyage Professionnel</title>
+    <meta name="description" content="Service de nettoyage professionnel résidentiel et commercial. Votre partenaire de confiance pour un environnement propre et sain.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-broom"></i>
+                    <span>SA Entretien</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#accueil" class="nav-link">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#forfaits" class="nav-link">Forfaits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#a-propos" class="nav-link">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#emplois" class="nav-link">Emplois</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link btn-primary">Réservez maintenant</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Service de nettoyage professionnel</h1>
+                <p class="hero-subtitle">Votre partenaire de confiance pour un environnement de vie propre et sain. Qualité garantie, satisfaction assurée.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Demandez une soumission</a>
+                    <a href="#services" class="btn btn-secondary">Nos services</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Clients satisfaits</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Années d'expérience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-time">24/7</span>
+                        <span class="stat-label">Service disponible</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <i class="fas fa-home"></i>
+                    <p>Image d'une maison propre</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Services</h2>
+                <p>Des solutions de nettoyage complètes et professionnelles pour tous vos besoins à Québec</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Nettoyage en Profondeur Résidentiel</h3>
+                    <p class="service-intro">Notre service de nettoyage en profondeur résidentiel s'adresse aux propriétaires et locataires qui souhaitent un ménage complet et soigné.</p>
+                    <div class="service-details" style="display: none;">
+                        <p>Chaque pièce est traitée avec attention : toutes les surfaces sont nettoyées, les recoins oubliés sont pris en charge, et votre domicile retrouve un état de propreté impeccable. Idéal pour un grand ménage de saison, un entretien ponctuel ou une remise en état.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Nettoyage complet de toutes les pièces</li>
+                            <li><i class="fas fa-check"></i> Traitement des recoins et surfaces difficiles</li>
+                            <li><i class="fas fa-check"></i> Désinfection et assainissement</li>
+                            <li><i class="fas fa-check"></i> Produits écologiques et sécuritaires</li>
+                            <li><i class="fas fa-check"></i> Service personnalisé selon vos besoins</li>
+                        </ul>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleServiceDetails(this)">
+                        <span class="read-more-text">Lire plus</span>
+                        <span class="read-less-text" style="display: none;">Lire moins</span>
+                        <i class="fas fa-chevron-down read-more-icon"></i>
+                        <i class="fas fa-chevron-up read-less-icon" style="display: none;"></i>
+                    </button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3>Nettoyage Après Rénovation</h3>
+                    <p class="service-intro">Après des travaux, un bon nettoyage s'impose. Notre service élimine efficacement tous les résidus de construction.</p>
+                    <div class="service-details" style="display: none;">
+                        <p>Notre service de nettoyage après rénovation élimine efficacement la poussière, les débris, les traces de plâtre, de peinture ou d'adhésif. Nous remettons les lieux en état, prêts à être utilisés ou emménagés.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Élimination de la poussière de construction</li>
+                            <li><i class="fas fa-check"></i> Nettoyage des traces de plâtre et peinture</li>
+                            <li><i class="fas fa-check"></i> Suppression des résidus d'adhésif</li>
+                            <li><i class="fas fa-check"></i> Nettoyage des surfaces et sols</li>
+                            <li><i class="fas fa-check"></i> Remise en état complète des lieux</li>
+                        </ul>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleServiceDetails(this)">
+                        <span class="read-more-text">Lire plus</span>
+                        <span class="read-less-text" style="display: none;">Lire moins</span>
+                        <i class="fas fa-chevron-down read-more-icon"></i>
+                        <i class="fas fa-chevron-up read-less-icon" style="display: none;"></i>
+                    </button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Entretien Commercial</h3>
+                    <p class="service-intro">Nous offrons un service d'entretien commercial fiable et adapté à vos besoins professionnels.</p>
+                    <div class="service-details" style="display: none;">
+                        <p>Nous offrons un service d'entretien commercial fiable et adapté à vos besoins : nettoyage de bureaux, commerces, cliniques, garderies, immeubles à logements et plus. Un environnement propre et sain, jour après jour.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Nettoyage de bureaux et espaces de travail</li>
+                            <li><i class="fas fa-check"></i> Entretien des commerces et boutiques</li>
+                            <li><i class="fas fa-check"></i> Services pour cliniques et établissements de santé</li>
+                            <li><i class="fas fa-check"></i> Nettoyage des garderies et écoles</li>
+                            <li><i class="fas fa-check"></i> Entretien des immeubles à logements</li>
+                        </ul>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleServiceDetails(this)">
+                        <span class="read-more-text">Lire plus</span>
+                        <span class="read-less-text" style="display: none;">Lire moins</span>
+                        <i class="fas fa-chevron-down read-more-icon"></i>
+                        <i class="fas fa-chevron-up read-less-icon" style="display: none;"></i>
+                    </button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Nettoyage Avant/Après Déménagement</h3>
+                    <p class="service-intro">Services de nettoyage complets avant l'emménagement et après le déménagement.</p>
+                    <div class="service-details" style="display: none;">
+                        <p>Nous offrons des services de nettoyage complets avant l'emménagement et après le déménagement. Que vous quittiez un logement ou que vous emménagiez dans une nouvelle résidence, nous veillons à ce que les lieux soient impeccables, désinfectés et prêts à accueillir les occupants.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Nettoyage complet avant emménagement</li>
+                            <li><i class="fas fa-check"></i> Service après déménagement</li>
+                            <li><i class="fas fa-check"></i> Désinfection complète des lieux</li>
+                            <li><i class="fas fa-check"></i> Nettoyage des armoires et placards</li>
+                            <li><i class="fas fa-check"></i> Préparation pour les nouveaux occupants</li>
+                        </ul>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleServiceDetails(this)">
+                        <span class="read-more-text">Lire plus</span>
+                        <span class="read-less-text" style="display: none;">Lire moins</span>
+                        <i class="fas fa-chevron-down read-more-icon"></i>
+                        <i class="fas fa-chevron-up read-less-icon" style="display: none;"></i>
+                    </button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3>Nettoyage Spécialisé</h3>
+                    <p class="service-intro">Services spécialisés pour des besoins spécifiques avec équipement professionnel.</p>
+                    <div class="service-details" style="display: none;">
+                        <p>Notre équipe dispose d'équipement spécialisé et de techniques avancées pour répondre à tous vos besoins de nettoyage spécifiques. Nous garantissons des résultats exceptionnels pour chaque type de surface et matériau.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Nettoyage de tapis et moquettes</li>
+                            <li><i class="fas fa-check"></i> Entretien des meubles et tissus</li>
+                            <li><i class="fas fa-check"></i> Nettoyage de vitres et surfaces vitrées</li>
+                            <li><i class="fas fa-check"></i> Traitement des surfaces délicates</li>
+                            <li><i class="fas fa-check"></i> Garantie satisfaction</li>
+                        </ul>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleServiceDetails(this)">
+                        <span class="read-more-text">Lire plus</span>
+                        <span class="read-less-text" style="display: none;">Lire moins</span>
+                        <i class="fas fa-chevron-down read-more-icon"></i>
+                        <i class="fas fa-chevron-up read-less-icon" style="display: none;"></i>
+                    </button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Entretien Régulier</h3>
+                    <p class="service-intro">Services d'entretien régulier pour maintenir un environnement propre en continu.</p>
+                    <div class="service-details" style="display: none;">
+                        <p>Maintenez votre espace propre et sain avec nos services d'entretien régulier. Nous proposons des forfaits adaptés à vos besoins et à votre budget, avec une fréquence personnalisée selon vos préférences.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Forfaits hebdomadaires, bi-hebdomadaires</li>
+                            <li><i class="fas fa-check"></i> Entretien mensuel personnalisé</li>
+                            <li><i class="fas fa-check"></i> Horaires flexibles selon vos besoins</li>
+                            <li><i class="fas fa-check"></i> Personnel formé et fiable</li>
+                            <li><i class="fas fa-check"></i> Service de qualité constant</li>
+                        </ul>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleServiceDetails(this)">
+                        <span class="read-more-text">Lire plus</span>
+                        <span class="read-less-text" style="display: none;">Lire moins</span>
+                        <i class="fas fa-chevron-down read-more-icon"></i>
+                        <i class="fas fa-chevron-up read-less-icon" style="display: none;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forfaits Section -->
+    <section id="forfaits" class="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Forfaits</h2>
+                <p>Des solutions adaptées à tous les budgets et besoins</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Essentiel</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">89</span>
+                            <span class="period">/mois</span>
+                        </div>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Nettoyage hebdomadaire</li>
+                        <li><i class="fas fa-check"></i> 2 pièces principales</li>
+                        <li><i class="fas fa-check"></i> Salle de bain</li>
+                        <li><i class="fas fa-check"></i> Cuisine</li>
+                        <li><i class="fas fa-check"></i> Produits fournis</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Choisir ce forfait</a>
+                </div>
+                <div class="package-card featured">
+                    <div class="package-badge">Populaire</div>
+                    <div class="package-header">
+                        <h3>Complet</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">149</span>
+                            <span class="period">/mois</span>
+                        </div>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Nettoyage bi-hebdomadaire</li>
+                        <li><i class="fas fa-check"></i> Toutes les pièces</li>
+                        <li><i class="fas fa-check"></i> Nettoyage des vitres</li>
+                        <li><i class="fas fa-check"></i> Désinfection</li>
+                        <li><i class="fas fa-check"></i> Service prioritaire</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Choisir ce forfait</a>
+                </div>
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Premium</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">249</span>
+                            <span class="period">/mois</span>
+                        </div>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Nettoyage quotidien</li>
+                        <li><i class="fas fa-check"></i> Service complet</li>
+                        <li><i class="fas fa-check"></i> Nettoyage spécialisé</li>
+                        <li><i class="fas fa-check"></i> Gestionnaire dédié</li>
+                        <li><i class="fas fa-check"></i> Garantie satisfaction</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Choisir ce forfait</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="a-propos" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>À propos de SA Entretien</h2>
+                    <p>Fondée en 2019, SA Entretien est une entreprise de nettoyage professionnel dédiée à offrir des services de qualité exceptionnelle à nos clients résidentiels et commerciaux.</p>
+                    <p>Notre équipe d'experts utilise des techniques modernes et des produits écologiques pour garantir un environnement propre et sain pour votre famille ou votre entreprise.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Assuré et Bondé</h4>
+                                <p>Protection complète pour votre tranquillité d'esprit</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <h4>Produits Écologiques</h4>
+                                <p>Respect de l'environnement et de votre santé</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Service 24/7</h4>
+                                <p>Disponible quand vous en avez besoin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-users"></i>
+                        <p>Notre équipe professionnelle</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section id="emplois" class="jobs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Rejoignez Notre Équipe</h2>
+                <p>Nous recherchons des professionnels passionnés pour rejoindre notre équipe</p>
+            </div>
+            <div class="jobs-grid">
+                <div class="job-card">
+                    <h3>Nettoyeur/Nettoyeuse</h3>
+                    <p class="job-location"><i class="fas fa-map-marker-alt"></i> Montréal et environs</p>
+                    <p class="job-type"><i class="fas fa-clock"></i> Temps plein / Temps partiel</p>
+                    <ul class="job-requirements">
+                        <li>Expérience en nettoyage résidentiel</li>
+                        <li>Permis de conduire valide</li>
+                        <li>Disponibilité flexible</li>
+                        <li>Bonne condition physique</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Postuler maintenant</a>
+                </div>
+                <div class="job-card">
+                    <h3>Superviseur de Nettoyage</h3>
+                    <p class="job-location"><i class="fas fa-map-marker-alt"></i> Montréal</p>
+                    <p class="job-type"><i class="fas fa-clock"></i> Temps plein</p>
+                    <ul class="job-requirements">
+                        <li>2+ années d'expérience en supervision</li>
+                        <li>Gestion d'équipe</li>
+                        <li>Connaissance des produits de nettoyage</li>
+                        <li>Bilinguisme (FR/EN)</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Postuler maintenant</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Contactez-nous</h2>
+                    <p>Prêt à profiter d'un environnement propre ? Contactez-nous pour une soumission gratuite.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>(514) 555-0123</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@saentretien.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>123 Rue Principale<br>Montréal, QC H1A 1A1</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Heures d'ouverture</h4>
+                                <p>Lun-Ven: 8h-18h<br>Sam: 9h-17h<br>Dim: Sur rendez-vous</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="quoteForm">
+                        <h3>Demandez une soumission</h3>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Votre nom complet" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Votre téléphone" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="residential">Nettoyage Résidentiel</option>
+                                <option value="commercial">Nettoyage Commercial</option>
+                                <option value="specialized">Nettoyage Spécialisé</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Décrivez vos besoins..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-broom"></i>
+                        <span>SA Entretien</span>
+                    </div>
+                    <p>Votre partenaire de confiance pour un environnement propre et sain à Québec.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Nettoyage Résidentiel</a></li>
+                        <li><a href="#services">Nettoyage Commercial</a></li>
+                        <li><a href="#services">Nettoyage Après Rénovation</a></li>
+                        <li><a href="#forfaits">Forfaits</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:(514) 555-0123">(514) 555-0123</a></li>
+                        <li><a href="mailto:info@saentretien.com">info@saentretien.com</a></li>
+                        <li><a href="#contact">Demander un devis</a></li>
+                        <li><a href="#emplois">Emplois</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SA Entretien. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
