@@ -31,6 +31,14 @@ function toggleServiceDetails(button) {
             });
         }, 300);
         
+        // Track service details expansion
+        if (typeof gtag !== 'undefined') {
+            const serviceName = serviceCard.querySelector('h3').textContent;
+            gtag('event', 'service_details_expand', {
+                'event_category': 'engagement',
+                'event_label': serviceName
+            });
+        }
     } else {
         // Hide details
         serviceDetails.classList.remove('active');
@@ -56,6 +64,14 @@ const navMenu = document.querySelector('.nav-menu');
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    
+    // Track mobile menu usage
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'mobile_menu_toggle', {
+            'event_category': 'engagement',
+            'event_label': navMenu.classList.contains('active') ? 'opened' : 'closed'
+        });
+    }
 });
 
 // Close mobile menu when clicking on a link
@@ -155,44 +171,18 @@ if (quoteForm) {
     quoteForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-        
-        // Basic validation
-        if (!data.name || !data.email || !data.phone || !data.service) {
-            showMessage('Veuillez remplir tous les champs obligatoires.', 'error');
-            return;
+        // Track form submission
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submit', {
+                'event_category': 'engagement',
+                'event_label': 'quote_request'
+            });
         }
         
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.email)) {
-            showMessage('Veuillez entrer une adresse email valide.', 'error');
-            return;
+        // Validate form
+        if (validateForm()) {
+            submitForm();
         }
-        
-        // Phone validation
-        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-        if (!phoneRegex.test(data.phone.replace(/\s/g, ''))) {
-            showMessage('Veuillez entrer un numéro de téléphone valide.', 'error');
-            return;
-        }
-        
-        // Simulate form submission
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Envoi en cours...';
-        
-        // Simulate API call
-        setTimeout(() => {
-            showMessage('Votre demande a été envoyée avec succès! Nous vous contacterons bientôt.', 'success');
-            this.reset();
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        }, 2000);
     });
 }
 
@@ -591,4 +581,267 @@ window.addEventListener('error', (e) => {
 window.addEventListener('unhandledrejection', (e) => {
     console.error('Unhandled Promise Rejection:', e.reason);
     // In production, you might want to send this to an error tracking service
+});
+
+// Enhanced form validation and analytics
+document.addEventListener('DOMContentLoaded', function() {
+    // Form validation and submission
+    const quoteForm = document.getElementById('quoteForm');
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Track form submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {
+                    'event_category': 'engagement',
+                    'event_label': 'quote_request'
+                });
+            }
+            
+            // Validate form
+            if (validateForm()) {
+                submitForm();
+            }
+        });
+    }
+    
+    // Enhanced form validation
+    function validateForm() {
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const service = document.getElementById('service').value;
+        
+        let isValid = true;
+        
+        // Name validation
+        if (name.length < 2) {
+            showError('name', 'Le nom doit contenir au moins 2 caractères');
+            isValid = false;
+        } else {
+            clearError('name');
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showError('email', 'Veuillez entrer une adresse email valide');
+            isValid = false;
+        } else {
+            clearError('email');
+        }
+        
+        // Phone validation
+        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+        if (!phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''))) {
+            showError('phone', 'Veuillez entrer un numéro de téléphone valide');
+            isValid = false;
+        } else {
+            clearError('phone');
+        }
+        
+        // Service validation
+        if (!service) {
+            showError('service', 'Veuillez sélectionner un service');
+            isValid = false;
+        } else {
+            clearError('service');
+        }
+        
+        return isValid;
+    }
+    
+    function showError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const errorDiv = field.parentNode.querySelector('.error-message') || 
+                        document.createElement('div');
+        
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = message;
+        errorDiv.style.color = '#ff6b6b';
+        errorDiv.style.fontSize = '0.875rem';
+        errorDiv.style.marginTop = '0.25rem';
+        
+        if (!field.parentNode.querySelector('.error-message')) {
+            field.parentNode.appendChild(errorDiv);
+        }
+        
+        field.style.borderColor = '#ff6b6b';
+    }
+    
+    function clearError(fieldId) {
+        const field = document.getElementById(fieldId);
+        const errorDiv = field.parentNode.querySelector('.error-message');
+        
+        if (errorDiv) {
+            errorDiv.remove();
+        }
+        
+        field.style.borderColor = '';
+    }
+    
+    function submitForm() {
+        const submitBtn = quoteForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        // Show loading state
+        submitBtn.textContent = 'Envoi en cours...';
+        submitBtn.disabled = true;
+        
+        // Simulate form submission (replace with actual endpoint)
+        setTimeout(() => {
+            // Show success message
+            showSuccessMessage();
+            
+            // Reset form
+            quoteForm.reset();
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+            // Track successful submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_success', {
+                    'event_category': 'engagement',
+                    'event_label': 'quote_request_success'
+                });
+            }
+        }, 2000);
+    }
+    
+    function showSuccessMessage() {
+        const successDiv = document.createElement('div');
+        successDiv.className = 'success-message';
+        successDiv.innerHTML = `
+            <div style="background: #4CAF50; color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                Merci ! Votre demande a été envoyée avec succès. Nous vous contacterons dans les 24 heures.
+            </div>
+        `;
+        
+        quoteForm.appendChild(successDiv);
+        
+        // Remove success message after 5 seconds
+        setTimeout(() => {
+            successDiv.remove();
+        }, 5000);
+    }
+});
+
+// Enhanced navigation with analytics
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const section = this.getAttribute('href').substring(1);
+            
+            // Track navigation clicks
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'navigation_click', {
+                    'event_category': 'engagement',
+                    'event_label': section
+                });
+            }
+        });
+    });
+});
+
+// Enhanced service card interactions
+document.addEventListener('DOMContentLoaded', function() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const serviceName = this.querySelector('h3').textContent;
+            
+            // Track service card interactions
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'service_card_click', {
+                    'event_category': 'engagement',
+                    'event_label': serviceName
+                });
+            }
+        });
+    });
+});
+
+// Enhanced scroll animations with intersection observer
+document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                
+                // Track section visibility
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'section_view', {
+                        'event_category': 'engagement',
+                        'event_label': entry.target.id || 'unknown_section'
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+    });
+});
+
+// Enhanced accessibility
+document.addEventListener('DOMContentLoaded', function() {
+    // Add keyboard navigation for service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+    
+    // Add skip link for accessibility
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main-content';
+    skipLink.textContent = 'Passer au contenu principal';
+    skipLink.className = 'skip-link';
+    skipLink.style.cssText = `
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #000;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 1000;
+        transition: top 0.3s;
+    `;
+    
+    document.body.insertBefore(skipLink, document.body.firstChild);
+    
+    skipLink.addEventListener('focus', function() {
+        this.style.top = '6px';
+    });
+    
+    skipLink.addEventListener('blur', function() {
+        this.style.top = '-40px';
+    });
 }); 
